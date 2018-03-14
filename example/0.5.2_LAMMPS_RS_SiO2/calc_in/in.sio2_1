@@ -1,0 +1,32 @@
+# ---------- Initialize Simulation ---------------------
+units           metal
+boundary        p p p
+atom_style      atomic
+box             tilt large
+
+# ---------- Initialize Structure ---------------------
+read_data       data.quartz
+replicate       4 4 4
+displace_atoms  all move 0.1 0.1 0.1 units box
+
+# ---------- Define Interatomic Potential ---------------------
+pair_style      tersoff
+pair_coeff      * *  SiO.tersoff Si O
+
+# ---------- Define Masses ---------------------
+mass            1 28.0855
+mass            2 15.9994
+
+# ---------- Output Configuration ---------------------
+thermo          1
+thermo_style    custom step etotal fmax vol press
+dump            struc all atom 1 log.struc
+
+# ---------- Run Atom Relaxation ---------------------
+min_style       quickmin
+minimize        1e-15 1e-15 500 10000
+
+# ---------- Run Cell Relaxation ---------------------
+min_style       cg
+fix             relax all box/relax iso 0.0
+minimize        1e-15 1e-15 500 10000

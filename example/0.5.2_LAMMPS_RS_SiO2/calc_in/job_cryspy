@@ -1,0 +1,3 @@
+#!/bin/bash
+lmp_serial -log log.sio2 -screen none -in in.sio2
+sed -i -e '3 s/^.*$/done/' stat_job

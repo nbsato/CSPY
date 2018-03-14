@@ -4,7 +4,6 @@
 import random
 import math
 
-
 def rndgen_lattice(spgnum, minlen, maxlen, dangle):
     # ---------- for spgnum = 0: no space group
     if spgnum == 0:

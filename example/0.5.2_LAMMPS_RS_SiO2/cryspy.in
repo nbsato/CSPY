@@ -1,0 +1,24 @@
+[basic]
+algo = RS
+calc_code = LAMMPS
+tot_struc = 11
+natot = 9
+atype = Si O
+nat = 3 6
+nstage = 1
+njob = 4
+jobcmd = bash
+jobfile = job_cryspy
+
+[lattice]
+minlen = 4
+maxlen = 8
+dangle = 30
+mindist_1 = 1.8 1.3
+mindist_2 = 1.3 1.0
+
+[LAMMPS]
+lammps_infile = in.sio2
+lammps_outfile = log.sio2
+lammps_potential = SiO.tersoff
+lammps_data = data.quartz
